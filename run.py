@@ -32,7 +32,9 @@ def validate_data(values):
     Converts all the data values cna be converted into integers.
     Checks that there are 6 numbers.
     """
+    print(values)
     try:
+        [int(value) for value in values]
         if len(values) != 6:
             raise ValueError(
                 f'Exactly 6 values required, you provided {len(values)}'
