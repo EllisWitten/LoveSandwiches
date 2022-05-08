@@ -20,8 +20,8 @@ def get_sales_data():
     """
     while True:
         print('Please enter sales data from the last market.')
-        print('Data should be six numbers, seperated by commas')
-        print('Example: 21,63,54,26,85,49\n')
+        print('Data should be six numbers, seperated by commas.')
+        print('Example: 21,63,54,26,85,49.\n')
 
         data_str = input('Enter your data here:')
         sales_data = data_str.split(',')
@@ -50,5 +50,16 @@ def validate_data(values):
         return False
     return True
 
+def update_sales_worksheet(data):
+    """
+    update sales worksheet, add new row with the list provided
+    """
+    print('updating sales worksheet...\n')
+    sales_worksheet = SHEET.worksheet('sales')
+    sales_worksheet.append_row(data)
+
 
 data = get_sales_data()
+sales_data = [int(num) for num in data]
+update_sales_worksheet(sales_data)
+print('Sales worksheet updated successfully.\n')
